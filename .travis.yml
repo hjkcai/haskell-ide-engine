@@ -35,7 +35,7 @@ stages:
 jobs:
    include:
      - stage: setup
-       env: GHC_VER="8.6.5"
+       env: GHC_VER="8.4.4"
        script: &setup
          - ls .stack-work/install/*/*/*/bin/hie || true
          - travis_retry stack --no-terminal --install-ghc --stack-yaml=stack-$GHC_VER.yaml setup
@@ -43,17 +43,17 @@ jobs:
          - stack --stack-yaml=stack-$GHC_VER.yaml build lens
 
      - stage: dependencies
-       env: GHC_VER="8.6.5"
+       env: GHC_VER="8.4.4"
        script: &dependencies
          - travis_retry stack --no-terminal --install-ghc --stack-yaml=stack-$GHC_VER.yaml build --only-dependencies
 
      - stage: test
-       env: GHC_VER="8.6.5"
+       env: GHC_VER="8.4.4"
        script: &test
          - stack --no-terminal --stack-yaml=stack-$GHC_VER.yaml install
 
      - stage: deploy
-       env: GHC_VER="8.6.5"
+       env: GHC_VER="8.4.4"
        script: &deploy
          - mkdir -p $HOME/hie-macos
          - cp .stack-work/install/*/*/$GHC_VER/bin/hie $HOME/hie-macos
