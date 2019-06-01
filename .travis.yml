@@ -4,9 +4,10 @@ os: osx
 
 addons:
   homebrew:
+    update: true,
     packages:
     - z3
-    - stack
+    - haskell-stack
     - upx
 
 cache:
