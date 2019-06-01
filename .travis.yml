@@ -47,6 +47,11 @@ jobs:
        script: &dependencies
          - travis_retry stack --no-terminal --install-ghc --stack-yaml=stack-$GHC_VER.yaml build --only-dependencies
 
+     - stage: test
+       env: GHC_VER="8.6.5"
+       script: &test
+         - stack --no-terminal --stack-yaml=stack-$GHC_VER.yaml install
+
      - stage: deploy
        env: GHC_VER="8.6.5"
        script: &deploy
